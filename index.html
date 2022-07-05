@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link href="src/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/98a35dcd56.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <main>
+        <img
+          id="current-weather-icon"
+          src="https://drive.google.com/uc?export=view&id=1iiwtVnRGJtksffe6-8MVmUy2pAfZOT8A"
+          Set-Cookie:
+          flavor="choco;"
+          SameSite="None;"
+          Secure
+          alt="clear sky"
+        />
+        <ul>
+          <li id="current-description">Clear Sky</li>
+          <li>
+            <span id="current-temp">91</span>°<span
+              class="unit"
+              id="current-temp-unit"
+              >F</span
+            >
+          </li>
+          <li>
+            <span><i class="fa-solid fa-location-dot"></i></span>
+            <span id="currrent-location">Paris, Texas</span>
+          </li>
+          <li>
+            Real Feel: <span id="current-rf">94</span>°<span class="unit"
+              >F</span
+            >
+          </li>
+          <li>Humidity: <span id="current-hum">60</span>%</li>
+          <li id="current-date">July 5, 2022 12:30PM</li>
+        </ul>
+      </main>
+      <div class="unit-bar">
+        <button class="button" id="fahrenheit-button">Fahrenheit</button>
+        <button class="button" id="celsius-button">Celsius</button>
+      </div>
+      <footer>
+        <div id="footer-content">
+          <form id="search-form">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              id="search-form-input"
+              placeholder="Search for a city"
+              autocomplete="off"
+              autofocus="on"
+              required
+            />
+            <input
+              type="submit"
+              value="Search"
+              class="button"
+              id="search_button"
+            />
+          </form>
+          <button class="button" id="current-weather-button">Current</button>
+        </div>
+      </footer>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
