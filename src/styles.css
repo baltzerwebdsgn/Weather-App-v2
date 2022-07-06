@@ -1,0 +1,138 @@
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+.wrapper {
+  display: block;
+  max-width: 600px;
+  margin: 50px auto;
+}
+main {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #18191a 50%, #ffaa0d 75%);
+  color: #d3d3d3;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+main img {
+  width: 312px;
+  height: 380px;
+  object-fit: cover;
+  object-position: 0% 0%;
+}
+main ul {
+  margin-top: 25.02px;
+  padding: 0;
+  list-style-type: none;
+}
+#current-description {
+  font-size: 33.93px;
+  margin-bottom: 76.22px;
+}
+#current-temp {
+  font-size: 148.78px;
+  background-image: linear-gradient(
+    160deg,
+    rgba(250, 250, 250, 1) 0%,
+    rgba(122, 122, 122, 0.5) 15%,
+    rgba(250, 250, 250, 1) 30%,
+    rgba(122, 122, 122, 0.25) 45%,
+    rgba(250, 250, 250, 1) 60%,
+    rgba(122, 122, 122, 0.5) 75%,
+    rgba(250, 250, 250, 1) 90%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+#current-temp-unit {
+  font-size: 136.38px;
+}
+.current-location {
+  font-size: 34.48px;
+  position: relative;
+  bottom: 16.19px;
+}
+.details {
+  font-size: 20.7px;
+  font-weight: 300;
+}
+#current-rf {
+  position: relative;
+  bottom: 6.38px;
+}
+#current-hum {
+  position: relative;
+  top: 2.75px;
+}
+#current-date {
+  font-style: italic;
+  font-weight: 100;
+  font-size: 20px;
+  position: relative;
+  top: 20px;
+}
+.unit-bar {
+  display: inline-flex;
+  width: 100%;
+  margin-bottom: 20px;
+  background: #18191a;
+}
+.unit {
+  flex-basis: 50%;
+  height: 60px;
+}
+.button {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20.7px;
+  line-height: 21px;
+  background: #18191a;
+  color: #d3d3d3;
+  border-radius: 20px;
+  box-shadow: inset 0px 3px 4px #ffffff;
+  border: none;
+  padding: 10px;
+  min-height: 40px;
+  transition: all 200ms ease;
+}
+.button:hover {
+  color: #18191a;
+  background-color: #e8e8e8;
+  cursor: pointer;
+}
+.active {
+  color: #18191a;
+  background: #d3d3d3;
+  box-shadow: inset 0px 3px 4px #18191a;
+}
+.active:hover {
+  color: #18191a;
+  background: #d3d3d3;
+  cursor: default;
+}
+#footer-content {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  background: #18191a;
+  color: #d3d3d3;
+}
+form {
+  flex-basis: 50%;
+}
+.search-icon {
+  padding-left: 25px;
+}
+#search-form-input {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#current-weather-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  flex-basis: 50%;
+}

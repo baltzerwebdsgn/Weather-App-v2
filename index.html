@@ -32,34 +32,40 @@
         />
         <ul>
           <li id="current-description">Clear Sky</li>
-          <li>
-            <span id="current-temp">91</span>°<span
+          <li id="current-temp">
+            <span id="current-temp-num">91</span>°<span
               class="unit"
               id="current-temp-unit"
               >F</span
             >
           </li>
           <li>
-            <span><i class="fa-solid fa-location-dot"></i></span>
-            <span id="currrent-location">Paris, Texas</span>
+            <i class="fa-solid fa-location-dot current-location"></i>
+            <span class="current-location" id="currrent-location"
+              >Paris, Texas</span
+            >
           </li>
-          <li>
-            Real Feel: <span id="current-rf">94</span>°<span class="unit"
+          <li class="details" id="current-ft">
+            Real Feel: <span id="current-rf-num">94</span>°<span class="unit"
               >F</span
             >
           </li>
-          <li>Humidity: <span id="current-hum">60</span>%</li>
+          <li class="details" id="current-hum">
+            Humidity: <span id="current-hum-num">60</span>%
+          </li>
           <li id="current-date">July 5, 2022 12:30PM</li>
         </ul>
       </main>
       <div class="unit-bar">
-        <button class="button" id="fahrenheit-button">Fahrenheit</button>
-        <button class="button" id="celsius-button">Celsius</button>
+        <button class="unit button active" id="fahrenheit-button">
+          Fahrenheit
+        </button>
+        <button class="unit button" id="celsius-button">Celsius</button>
       </div>
       <footer>
         <div id="footer-content">
           <form id="search-form">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
             <input
               type="text"
               id="search-form-input"
