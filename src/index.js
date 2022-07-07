@@ -83,10 +83,9 @@ function updateCurrentDateTime(date) {
   updateText(formatDate(date, "main"), "#current-date");
 }
 
-// Buttons
+// Unit Bar Buttons
 let tempFButton = document.querySelector("#fahrenheit-button");
 let tempCButton = document.querySelector("#celsius-button");
-let currentButton = document.querySelector("#current-weather-button");
 
 function changeUnitDegree(unit) {
   let tempUnit = document.querySelector("#current-temp-unit");
@@ -126,6 +125,9 @@ function updateFahrenheitButton(event) {
 tempFButton.addEventListener("click", updateFahrenheitButton);
 tempCButton.addEventListener("click", updateCelsiusButton);
 
+//Current Location Functionality
+
+// Updates Page Values
 function getCurrentData(response) {
   let temp = Math.round(response.data.main.temp);
   let forecast = response.data.weather[0].description;
@@ -175,7 +177,7 @@ function searchCurrentLocation() {
   navigator.geolocation.getCurrentPosition(handlePosition);
 }
 
-//Event for converting the temperature units
+let currentButton = document.querySelector("#current-weather-button");
 currentButton.addEventListener("click", searchCurrentLocation);
 
 // Upon page load
