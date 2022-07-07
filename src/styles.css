@@ -3,7 +3,7 @@ body {
 }
 .wrapper {
   display: block;
-  max-width: 600px;
+  max-width: 700px;
   margin: 50px auto;
 }
 main {
@@ -18,10 +18,10 @@ main {
   padding-left: 20px;
 }
 .day-background {
-  background: linear-gradient(90deg, #18191a 50%, #ffaa0d 75%);
+  background: linear-gradient(90deg, #18191a 58%, #ffaa0d 75%);
 }
 .night-background {
-  background: linear-gradient(90deg, #18191a 50%, #197fff 75%);
+  background: linear-gradient(90deg, #18191a 58%, #197fff 75%);
 }
 main img {
   width: 312px;
@@ -135,6 +135,7 @@ form {
 #search-form-input {
   margin-left: 5px;
   margin-right: 5px;
+  width: 50%;
 }
 #current-weather-button {
   margin-top: 10px;
