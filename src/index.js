@@ -82,6 +82,27 @@ function formatDate(now, section) {
 function updateCurrentDateTime(date) {
   updateText(formatDate(date, "main"), "#current-date");
 }
+//Update Main background
+function updateWeatherIcon(icon) {
+  let mainBackground = document.querySelector("main");
+  if (
+    icon === "01d" ||
+    icon === "02d" ||
+    icon === "03d" ||
+    icon === "04d" ||
+    icon === "09d" ||
+    icon === "10d" ||
+    icon === "11d" ||
+    icon === "13d" ||
+    icon === "50d"
+  ) {
+    mainBackground.classList.remove("night-background");
+    mainBackground.classList.add("day-background");
+  } else {
+    mainBackground.classList.remove("day-background");
+    mainBackground.classList.add("night-background");
+  }
+}
 
 // Unit Bar Buttons
 let tempFButton = document.querySelector("#fahrenheit-button");
@@ -133,6 +154,7 @@ function getCurrentData(response) {
   let forecast = response.data.weather[0].description;
   let feels_like = Math.round(response.data.main.feels_like);
   let humidity = response.data.main.humidity;
+  let icon = response.data.weather[0].icon;
 
   tempF = temp;
   tempRF = feels_like;
@@ -141,6 +163,7 @@ function getCurrentData(response) {
   updateText(forecast, "#current-description");
   updateText(feels_like, "#current-rf-num");
   updateText(humidity, "#current-hum-num");
+  updateWeatherIcon(icon);
 }
 
 function getCityHeading(response) {
