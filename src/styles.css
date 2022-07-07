@@ -37,6 +37,7 @@ main ul {
 #current-description {
   font-size: 33.93px;
   margin-bottom: 76.22px;
+  text-transform: capitalize;
 }
 #current-temp {
   font-size: 148.78px;

@@ -80,6 +80,7 @@ function updateCurrentDateTime(date) {
 // Buttons
 let tempFButton = document.querySelector("#fahrenheit-button");
 let tempCButton = document.querySelector("#celsius-button");
+let currentButton = document.querySelector("#current-weather-button");
 
 function changeUnitDegree(unit) {
   let tempUnit = document.querySelector("#current-temp-unit");
@@ -110,6 +111,56 @@ function updateFahrenheitButton(event) {
 tempFButton.addEventListener("click", updateFahrenheitButton);
 tempCButton.addEventListener("click", updateCelsiusButton);
 
+function getCurrentData(response) {
+  let temp = Math.round(response.data.main.temp);
+  let forecast = response.data.weather[0].description;
+  let feels_like = Math.round(response.data.main.feels_like);
+  let humidity = response.data.main.humidity;
+
+  updateText(temp, "#current-temp-num");
+  updateText(forecast, "#current-description");
+  updateText(feels_like, "#current-rf-num");
+  updateText(humidity, "#current-hum-num");
+}
+
+function getCityHeading(response) {
+  let city = response.data[0].name;
+  let state = response.data[0].state;
+  let country = response.data[0].country;
+
+  if (state !== undefined) {
+    updateText(`${city}, ${state}`, "#currrent-location");
+  } else {
+    updateText(`${city}, ${country}`, "#currrent-location");
+  }
+}
+
+function handlePosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+
+  let apiKey = "b8f1228856ca04cc31b22654a95bc412";
+  let units = "imperial";
+  let apiEndPoint = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiURL = `${apiEndPoint}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiURL).then(getCurrentData);
+
+  let limit = 1;
+  let apiEndPointGeoCoding = "https://api.openweathermap.org/geo/1.0/reverse?";
+  let apiURLGC = `${apiEndPointGeoCoding}lat=${lat}&lon=${lon}&limit=${limit}&appid=${apiKey}`;
+
+  axios.get(apiURLGC).then(getCityHeading);
+}
+
+function searchCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(handlePosition);
+}
+
+//Event for converting the temperature units
+currentButton.addEventListener("click", searchCurrentLocation);
+
 // Upon page load
+searchCurrentLocation();
 let now = new Date();
 updateCurrentDateTime(now);
