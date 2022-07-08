@@ -23,7 +23,7 @@ main {
 .night-background {
   background: linear-gradient(90deg, #18191a 58%, #197fff 75%);
 }
-.image-container {
+.image-container-standard {
   display: flex;
   align-items: flex-end;
 }
@@ -83,7 +83,7 @@ main ul {
 #current-temp-unit {
   font-size: 136.38px;
 }
-#current-location {
+#current-location-content {
   font-size: 34.48px;
   position: relative;
   bottom: 16.19px;
