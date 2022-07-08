@@ -82,8 +82,107 @@ function formatDate(now, section) {
 function updateCurrentDateTime(date) {
   updateText(formatDate(date, "main"), "#current-date");
 }
+let icons = {
+  "01d": {
+    link: "1iiwtVnRGJtksffe6-8MVmUy2pAfZOT8A",
+    class: "standard",
+  },
+  "01n": {
+    link: "1oMAxtSVw9eSgymhKTuXT2fwC-y7jV9B5",
+    class: "standard",
+  },
+  "02d": {
+    link: "1WOSx8JLV9DxDZsdcbgq9UZmyjsUk49Z5",
+    class: "standard",
+  },
+  "02n": {
+    link: "11cajI7phCcdne6fGfI-FKoSxxWL4qkr4",
+    class: "standard",
+  },
+  "03d": {
+    link: "1IqscjHu-X5_FwqpDguh6YZtX_TujavLW",
+    class: "small",
+  },
+  "03n": {
+    link: "1o-GOCuFMDG6zqUnZN9Ch5L5y6Gn2-JrK",
+    class: "small",
+  },
+  "04d": {
+    link: "1n8fdFFgKOHXPg9S07_ibcjQnBMapiQHQ",
+    class: "medium",
+  },
+  "04n": {
+    link: "1MSmXxUj5_TkInzVz7FWJQ3zBE_PugRnq",
+    class: "medium",
+  },
+  "09d": {
+    link: "1U2-HaxWPYqvPOt22e9hwmeENWOlwCa8L",
+    class: "standard",
+  },
+  "09n": {
+    link: "14tXJRlicseb8v3-sgp1xJLqs0diCAKnnq",
+    class: "standard",
+  },
+  "10d": {
+    link: "1fDpfP7uWLD96dZWscD3flGyooKFp7HqU",
+    class: "large",
+  },
+  "10n": {
+    link: "1ndrFoHms0rBTiY4w4us2uRXwziddRcpo",
+    class: "large",
+  },
+  "11d": {
+    link: "1GobkR3arkRXyZDsqMdysE0yV_qce0kxf",
+    class: "standard",
+  },
+  "11n": {
+    link: "1-ynpaWnbZc6hLvewY0d8xzW8milpcwvi",
+    class: "standard",
+  },
+  "13d": {
+    link: "1cytubf2CR30bahaQ_4qXMA-irJwfmLE4",
+    class: "standard",
+  },
+  "13n": {
+    link: "12oCTliahRyLy6OcHlSmDld90QU60dvYs",
+    class: "standard",
+  },
+  "50d": {
+    link: "1Q9ZIvGezJ1byU3TPrhlwnVcUJJ0rScdt",
+    class: "mist",
+  },
+  "50n": {
+    link: "1eJNCEaHhnD0kjJ-4iaLTQbwaH2nsKrU9",
+    class: "mist",
+  },
+};
+
+function updateIcon(icon, forecast) {
+  let weatherIcon = document.getElementById("current-weather-icon");
+  let driveEndpoint = "https://drive.google.com/uc?export=view&id=";
+  let clearClasses = ["standard", "small", "medium", "large", "mist"];
+  let mistAdjustment = document.querySelector("#image-container");
+
+  let srcNew = driveEndpoint + icons[icon].link;
+  weatherIcon.src = srcNew;
+  weatherIcon.alt = forecast;
+  weatherIcon.classList.remove(clearClasses);
+  weatherIcon.classList.add(icons[icon].class);
+  let testCondition = mistAdjustment.classList.contains("image-container-mist");
+
+  if (icon === "50d" || icon === "50n") {
+    mistAdjustment.classList.replace(
+      "image-container-standard",
+      "image-container-mist"
+    );
+  } else if (testCondition === true) {
+    mistAdjustment.classList.toggle("image-container-standard");
+    mistAdjustment.classList.toggle("image-container-mist");
+  }
+}
+
 //Update Main background
-function updateWeatherIcon(icon) {
+function updateWeatherIcon(icon, forecast) {
   let mainBackground = document.querySelector("main");
   if (
     icon === "01d" ||
@@ -102,6 +201,7 @@ function updateWeatherIcon(icon) {
     mainBackground.classList.remove("day-background");
     mainBackground.classList.add("night-background");
   }
+  updateIcon(icon, forecast);
 }
 
 // Unit Bar Buttons
@@ -163,7 +263,7 @@ function getCurrentData(response) {
   updateText(forecast, "#current-description");
   updateText(feels_like, "#current-rf-num");
   updateText(humidity, "#current-hum-num");
-  updateWeatherIcon(icon);
+  updateWeatherIcon(icon, forecast);
 }
 
 function getCityHeading(response) {

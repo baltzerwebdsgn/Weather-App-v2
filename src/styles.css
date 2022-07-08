@@ -23,19 +23,44 @@ main {
 .night-background {
   background: linear-gradient(90deg, #18191a 58%, #197fff 75%);
 }
-main img {
+.image-container {
+  display: flex;
+  align-items: flex-end;
+}
+.image-container-mist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image {
   width: 312px;
-  height: 380px;
   object-fit: cover;
   object-position: 0% 0%;
 }
+.standard {
+  height: 380px;
+}
+.small {
+  height: 240px;
+}
+.medium {
+  height: 270px;
+}
+.large {
+  height: 350px;
+}
+.mist {
+  height: 228px;
+}
 main ul {
-  margin-top: 25.02px;
+  margin: 0;
   padding: 0;
   list-style-type: none;
 }
 #current-description {
   font-size: 33.93px;
+  position: relative;
+  top: 15.02px;
   margin-bottom: 76.22px;
   text-transform: capitalize;
 }
@@ -58,7 +83,7 @@ main ul {
 #current-temp-unit {
   font-size: 136.38px;
 }
-.current-location {
+#current-location {
   font-size: 34.48px;
   position: relative;
   bottom: 16.19px;
@@ -73,7 +98,7 @@ main ul {
 }
 #current-hum {
   position: relative;
-  top: 2.75px;
+  bottom: 2.75px;
 }
 #current-date {
   font-style: italic;

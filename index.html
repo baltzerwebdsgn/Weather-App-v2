@@ -21,15 +21,18 @@
   <body>
     <div class="wrapper">
       <main class="day-background">
-        <img
-          id="current-weather-icon"
-          src="https://drive.google.com/uc?export=view&id=1iiwtVnRGJtksffe6-8MVmUy2pAfZOT8A"
-          Set-Cookie:
-          flavor="choco;"
-          SameSite="None;"
-          Secure
-          alt="clear sky"
-        />
+        <div class="image-container-standard" id="image-container">
+          <img
+            class="image standard"
+            id="current-weather-icon"
+            src="https://drive.google.com/uc?export=view&id=1iiwtVnRGJtksffe6-8MVmUy2pAfZOT8A"
+            Set-Cookie:
+            flavor="choco;"
+            SameSite="None;"
+            Secure
+            alt="clear sky"
+          />
+        </div>
         <ul>
           <li id="current-description">Clear Sky</li>
           <li id="current-temp">
@@ -39,13 +42,11 @@
               >F</span
             >
           </li>
-          <li>
-            <i class="fa-solid fa-location-dot current-location"></i>
-            <span class="current-location" id="currrent-location"
-              >Paris, Texas</span
-            >
+          <li id="current-location">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="currrent-location">Paris, Texas</span>
           </li>
-          <li class="details" id="current-ft">
+          <li class="details" id="current-rf">
             Real Feel: <span id="current-rf-num">94</span>°<span
               class="unit"
               id="current-rf-unit"
