@@ -120,7 +120,7 @@ let icons = {
     class: "standard",
   },
   "09n": {
-    link: "14tXJRlicseb8v3-sgp1xJLqs0diCAKnnq",
+    link: "14tXJRlicseb8v3-sgp1xJLqs0diCAKnn",
     class: "standard",
   },
   "10d": {
@@ -160,13 +160,13 @@ let icons = {
 function updateIcon(icon, forecast) {
   let weatherIcon = document.getElementById("current-weather-icon");
   let driveEndpoint = "https://drive.google.com/uc?export=view&id=";
-  let clearClasses = ["standard", "small", "medium", "large", "mist"];
   let mistAdjustment = document.querySelector("#image-container");
 
   let srcNew = driveEndpoint + icons[icon].link;
   weatherIcon.src = srcNew;
   weatherIcon.alt = forecast;
-  weatherIcon.classList.remove(clearClasses);
+  weatherIcon.removeAttribute("class");
+  weatherIcon.classList.add("image");
   weatherIcon.classList.add(icons[icon].class);
   let testCondition = mistAdjustment.classList.contains("image-container-mist");
 
@@ -278,6 +278,24 @@ function getCityHeading(response) {
   }
 }
 
+// Fixes casing on city name
+function fixCasing(x) {
+  x = x.toLowerCase();
+
+  let words = x.split(" ");
+
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].substring(1);
+  }
+  words = words.join(" ");
+  return words;
+}
+
+//Change current City Name
+function updateCurrentCity(newCity) {
+  updateText(fixCasing(newCity), "#currrent-location");
+}
+
 function handlePosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -298,14 +316,36 @@ function handlePosition(position) {
 
 function searchCurrentLocation() {
   navigator.geolocation.getCurrentPosition(handlePosition);
+  let now = new Date();
+  updateCurrentDateTime(now);
 }
+
+function searchCity(city) {
+  let apiKey = "b8f1228856ca04cc31b22654a95bc412";
+  let units = "imperial";
+  let apiEndPoint = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiURL = `${apiEndPoint}q=${city}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiURL).then(getCurrentData);
+
+  updateCurrentCity(city);
+}
+
+function search(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-form-input").value;
+  searchInput = searchInput.trim();
+  searchCity(searchInput);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", search);
 
 let currentButton = document.querySelector("#current-weather-button");
 currentButton.addEventListener("click", searchCurrentLocation);
 
 // Upon page load
 searchCurrentLocation();
-let now = new Date();
-updateCurrentDateTime(now);
+
 let tempF = null;
 let tempRF = null;
