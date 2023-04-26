@@ -326,7 +326,12 @@ function searchCity(city) {
   let apiEndPoint = "https://api.openweathermap.org/data/2.5/weather?";
   let apiURL = `${apiEndPoint}q=${city}&appid=${apiKey}&units=${units}`;
 
-  axios.get(apiURL).then(getCurrentData);
+  axios
+    .get(apiURL)
+    .then(getCurrentData)
+    .catch(function (error) {
+      alert(`We do not have weather information on ${city}.`);
+    });
 
   updateCurrentCity(city);
 }
